@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/3775ad34f5.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Increment Counter Web</title>
+    <style>
+      * {
+        padding: 0%;
+        margin: 0%;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: rgb(22, 1, 43);
+        display: flex;
+        place-items: center;
+        position: absolute;
+        top: 32%;
+        left: 30%;
+      }
+
+      i {
+        color: white;
+        padding: 3px;
+        margin: 10px 33px;
+        /* background-color: aqua; */
+      }
+
+      .counter {
+        color: coral;
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      span {
+        color: rgb(226, 210, 241);
+        display: block;
+        text-align: center;
+        margin: 3px;
+        padding: 3px;
+      }
+
+      .counter-container {
+        margin: 25px;
+        padding: 8px;
+        /* background-color: rgb(133, 189, 238); */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="counter-container">
+      <i class="fa-solid fa-mug-hot fa-3x" id="mug"></i>
+      <div class="counter" data-target="4000"></div>
+      <span>Project Completed</span>
+    </div>
+
+    <div class="counter-container">
+      <i class="fa-solid fa-users fa-3x"></i>
+      <div class="counter" data-target="15000"></div>
+      <span>Our Happy Clients</span>
+    </div>
+
+    <div class="counter-container">
+      <i class="fa-solid fa-tasks fa-3x"></i>
+      <div class="counter" data-target="500"></div>
+      <span>OnGoing Projects</span>
+    </div>
+
+    <script>
+      var counter = document.querySelectorAll(".counter");
+      counter.forEach((countdown) => {
+        // console.log(counters);
+        countdown.innerHTML = 0;
+
+        const upcoundown = () => {
+          const targetcount = Number(countdown.getAttribute("data-target"));
+          //here countdown is a string so we need to convert string to number
+          // ans so we have used +str OR Number(str) method
+          // console.log(typeof targetcount);
+
+          const starting = +countdown.innerHTML;
+          //console.log(typeof starting);
+          const incre = targetcount / 100;
+          if (starting < targetcount) {
+            countdown.innerHTML = `${Math.round(starting + incre)}`;
+            setTimeout(upcoundown, 20);
+          } else {
+            countdown.innerHTML = targetcount;
+          }
+        };
+
+        upcoundown();
+      });
+    </script>
+  </body>
+</html>
